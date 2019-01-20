@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         devrant-unswear
 // @namespace    http://tampermonkey.net/
-// @version      0.3
+// @version      0.4
 // @description  remove bad words from post
 // @author       devTeaa
 // @match        https://devrant.com/*
@@ -11,9 +11,9 @@
 (function() {
   let randomMode = false;
 
-  let goodWords = ["❤️"];
+  let goodWords = ["❤️", "🎀"];
   let badWords = ["fuck"];
-  let elementToWatch = ["div.rantlist-title-text", "div.rantlist-tags > a", "div.rantlist-title", "h1.rantlist-content"];
+  let elementToWatch = ["div.rantlist-title-text", "div.rantlist-tags > a", "div.rantlist-title", "h1.rantlist-content", "div.related-rant-text"];
 
   badWords = badWords.map(word => new RegExp(word, "gi"));
 
@@ -23,7 +23,7 @@
     document.querySelectorAll(element).forEach(el => {
       badWords.forEach((reg, i) => {
         if (randomMode || goodWords.length !== badWords) {
-          i = Math.floor(Math.random() * Math.floor(goodWords.length - 1));
+          i = Math.floor(Math.random() * Math.floor(goodWords.length));
           el.innerHTML = el.innerHTML.replace(reg, goodWords[i]);
         } else {
           el.innerHTML = el.innerHTML.replace(reg, goodWords[i]);
