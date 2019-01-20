@@ -19,3 +19,5 @@ let goodWords = ["❤️"];
 let badWords = ["..."];
 let elementToWatch = ["..."];
 ```
+
+![](sc.png)
