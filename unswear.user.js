@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         devrant-unswear
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  remove bad words from post
 // @author       devTeaa
 // @match        https://devrant.com/*
@@ -12,7 +12,8 @@
   let randomMode = false;
 
   let goodWords = ["❤️"];
-  let badWords = ["fucking", "fuck"];
+  let badWords = ["fuck"];
+  let elementToWatch = ["div.rantlist-title-text", "div.rantlist-tags > a", "div.rantlist-title", "h1.rantlist-content"];
 
   let badRegex = badWords.map(word => new RegExp(word, "gi"));
 
@@ -28,10 +29,16 @@
     });
   }
 
-  document.querySelectorAll("div.rantlist-title-text").forEach(el => {
-    replaceBadWords(el, randomMode);
-  });
-  document.querySelectorAll("div.rantlist-tags > a").forEach(el => {
-    replaceBadWords(el, randomMode);
+  elementToWatch.forEach(element => {
+    document.querySelectorAll(element).forEach(el => {
+      badRegex.forEach((reg, i) => {
+        if (randomMode || goodWords.length !== badWords) {
+          i = Math.floor(Math.random() * Math.floor(goodWords.length - 1));
+          el.innerHTML = el.innerHTML.replace(reg, goodWords[i]);
+        } else {
+          el.innerHTML = el.innerHTML.replace(reg, goodWords[i]);
+        }
+      });
+    });
   });
 })();

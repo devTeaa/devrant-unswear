@@ -12,8 +12,10 @@ Download tampermonkey:
 Then install the user-script here:
 https://github.com/devTeaa/devrant-unswear/raw/master/unswear.user.js
 
-You can add your own medium-like site by adding this starting from line 5
+You can edit the words and elements starting from line 14
 
 ```
-// @match *medium.com/*
+let goodWords = ["❤️"];
+let badWords = ["..."];
+let elementToWatch = ["..."];
 ```
