@@ -13,7 +13,7 @@
   // but the goodWords must have the same lenght as badWords
   let randomMode = true;
 
-  let goodWords = ["❤️", "🎀"];
+  let goodWords = ["❤️", "🎀", "hug"];
   let badWords = ["fuck"];
   let elementToWatch = ["div.rantlist-title-text", "div.rantlist-tags > a", "div.rantlist-title", "h1.rantlist-content", "div.related-rant-text"];
 
