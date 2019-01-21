@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         devrant-unswear
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  Remove bad words from any post
 // @author       devTeaa
 // @match        https://devrant.com/*
@@ -13,8 +13,9 @@
   // If randomMode's false, goodWords must have the same length as badWords. 
   let randomMode = true;
 
-  let goodWords = ["❤️", "🎀"];
-  let badWords = ["fuck(\w+)?", "motherfuck(\w+)?", "shit(\w+)?", "bitch(\w)?"];
+  let goodWords = ["❤️", "🎀", "hug"];
+  let badWords = ["fuck(\\w+)?", "motherfuck(\\w+)?", "shit(\\w+)?", "bitch(\\w+)?"];
+  
   let elementToWatch = ["div.rantlist-title-text", "div.rantlist-tags > a", "div.rantlist-title", "h1.rantlist-content", "div.related-rant-text"];
 
   let badWordsReg = RegExp(badWords.join("|"));
