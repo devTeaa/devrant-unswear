@@ -22,8 +22,8 @@
   let elementToWatch = ["div.rantlist-title-text", "div.rantlist-tags > a", "div.rantlist-title", "h1.rantlist-content", "div.related-rant-text"];
 
   // Create badWords and verb with tenses regex
-  let badWordsReg = RegExp(badWords.join("|"));
-  let badWordsTenseReg = RegExp(`(${badWords.join("|")})+(ing|ed)+`);
+  let badWordsReg = RegExp(badWords.join("|"), "i");
+  let badWordsTenseReg = RegExp(`(${badWords.join("|")})+(ing|ed)+`, "i");
 
   badWords = badWords.map(word => new RegExp(word, "i"));
   ("use strict");
